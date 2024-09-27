@@ -9,3 +9,11 @@
     margin-bottom: 64px;
     text-align: center;
 }
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 16px;
+    margin-bottom: 24px;
+}
