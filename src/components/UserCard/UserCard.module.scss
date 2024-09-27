@@ -1,0 +1,32 @@
+.card {
+    padding: 24px 32px;
+    border-radius: 16px;
+    background-color: #444444;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.24s;
+    &:hover {
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.name {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.email,
+.phone,
+.website,
+.address {
+    margin-bottom: 8px;
+    font-size: 14px;
+    span {
+        font-weight: 700;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .card {
+        background-color: #f9f9f9;
+    }
+}

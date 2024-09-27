@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { FC, useEffect, useState } from "react";
+import styles from "./App.module.scss";
+import { UserList } from "./components/UsersList/UsersList";
+import { User } from "./types";
 
-function App() {
-  const [count, setCount] = useState(0)
+export const App: FC = () => {
+    const [users, setUsers] = useState<User[]>([]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    // Fetch users from API
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch(
+                    "https://jsonplaceholder.typicode.com/users"
+                );
+                const data = await response.json();
+                setUsers(data);
+            } catch (error) {
+                console.error("Error fetching users:", error);
+            }
+        };
 
-export default App
+        fetchUsers();
+    }, []);
+
+    return (
+        <div className={styles.wrapper}>
+            <h1 className={styles.title}>User Dashboard</h1>
+            <UserList users={users} />
+        </div>
+    );
+};
+
+export default App;
