@@ -1,0 +1,23 @@
+.sortButtons {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    height: 100%;
+    button {
+        border-radius: 8px;
+        border: 1px solid transparent;
+        padding: 0 24px;
+        font-size: 1em;
+        font-weight: 500;
+        font-family: inherit;
+        background-color: #f9f9f9;
+        height: 48px;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: box-shadow 0.25s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        &:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
